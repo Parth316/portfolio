@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Parth's Portfolio - Full-Stack Developer & UI/UX Designer creating exceptional digital experiences.">
+  <meta property="og:title" content="Parth's Portfolio">
+  <meta property="og:description" content="Explore Parth's work as a Full-Stack Developer & UI/UX Designer.">
+  <meta property="og:image" content="https://your-site.com/og-image.jpg">
+  <meta property="og:type" content="website">
+  <title>Parth - Portfolio</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts (Poppins) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Typed.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <!-- Open Props Easings -->
+  <link rel="stylesheet" href="https://unpkg.com/open-props/easings.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- Custom JavaScript -->
+  <script src="../js/index.js" defer></script>
+</head>
+<body class="bg-[var(--primary-bg)] text-[var(--text-color)] relative overflow-x-hidden theme-transition">
+  <!-- Particle Background -->
+  <canvas id="background" class="fixed inset-0 w-full h-full -z-10 opacity-80"></canvas>
+
+  <!-- Navbar -->
+  <header class="bg-[var(--section-bg)] bg-opacity-90 backdrop-blur-sm text-[var(--text-color)] py-4 fixed w-full top-0 z-50 shadow-lg theme-transition">
+    <div class="container mx-auto px-6 sm:px-10 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold transition-transform hover:scale-110 flex items-center">
+        <span class="gradient-text">Portfolio</span>
+      </a>
+      <nav class="hidden md:flex space-x-6 items-center">
+        <a href="#home" class="nav-link hover:text-[#9b22dd] transition-colors relative group">Home<span class="nav-underline"></span></a>
+        <a href="#about" class="nav-link hover:text-[#9b22dd] transition-colors relative group">About<span class="nav-underline"></span></a>
+        <a href="#portfolio" class="nav-link hover:text-[#9b22dd] transition-colors relative group">Portfolio<span class="nav-underline"></span></a>
+        <a href="#experience" class="nav-link hover:text-[#9b22dd] transition-colors relative group">Experience<span class="nav-underline"></span></a>
+        <a href="#skills" class="nav-link hover:text-[#9b22dd] transition-colors relative group">Skills<span class="nav-underline"></span></a>
+        <a href="#contact" class="nav-link hover:text-[#9b22dd] transition-colors relative group">Contact<span class="nav-underline"></span></a>
+        <button class="theme-toggle p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-[#9b22dd]" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+          <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+            <mask class="moon" id="moon-mask">
+              <rect x="0" y="0" width="100%" height="100%" fill="white" />
+              <circle cx="24" cy="10" r="6" fill="black" />
+            </mask>
+            <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+            <g class="sun-beams" stroke="currentColor">
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </g>
+          </svg>
+        </button>
+      </nav>
+      <button id="mobile-menu-button" class="md:hidden text-2xl focus:outline-none">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden bg-[var(--section-bg)] w-full absolute left-0 top-full px-4 py-2 shadow-lg theme-transition">
+      <div class="flex flex-col space-y-3 py-4">
+        <a href="#home" class="nav-link hover:text-[#9b22dd] transition-colors">Home</a>
+        <a href="#about" class="nav-link hover:text-[#9b22dd] transition-colors">About</a>
+        <a href="#portfolio" class="nav-link hover:text-[#9b22dd] transition-colors">Portfolio</a>
+        <a href="#experience" class="nav-link hover:text-[#9b22dd] transition-colors">Experience</a>
+        <a href="#skills" class="nav-link hover:text-[#9b22dd] transition-colors">Skills</a>
+        <a href="#contact" class="nav-link bg-[#9b22dd] hover:bg-[#9b55dd] text-white px-4 py-2 rounded-lg text-center transition-all">Contact</a>
+        <button class="theme-toggle p-2 text-left hover:text-[#9b22dd] transition-colors focus:outline-none focus:ring-2 focus:ring-[#9b22dd] flex items-center" id="mobile-theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+          Toggle Theme
+          <svg class="sun-and-moon ml-2" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24">
+            <mask class="moon" id="mobile-moon-mask">
+              <rect x="0" y="0" width="100%" height="100%" fill="white" />
+              <circle cx="24" cy="10" r="6" fill="black" />
+            </mask>
+            <circle class="sun" cx="12" cy="12" r="6" mask="url(#mobile-moon-mask)" fill="currentColor" />
+            <g class="sun-beams" stroke="currentColor">
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </g>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen flex items-center justify-center bg-[var(--section-bg)] text-[var(--text-color)] pt-20 relative theme-transition">
+    <div class="container px-6 sm:px-10 lg:px-32 flex flex-col md:flex-row items-center justify-center gap-12">
+      <div class="max-w-2xl text-center">
+        <h1 class="gradient-text text-4xl sm:text-5xl md:text-6xl font-bold mb-4 animate-bounce-slow" role="heading" aria-level="1">Hi, I'm Parth</h1>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-medium mb-6 text-[var(--secondary-text)]">
+          <span id="typed-text"></span>
+        </h2>
+        <p class="text-base sm:text-lg mb-8 opacity-90 leading-relaxed">I create exceptional digital experiences that blend beautiful design with robust functionality. Let's build something amazing together.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#portfolio" class="inline-block bg-[#9b22dd] hover:bg-[#9b55dd] text-white py-3 px-8 rounded-lg transition-all hover:-translate-y-1 hover:scale-105 flex items-center justify-center gap-2 text-lg font-medium focus:outline-none focus:ring-2 focus:ring-[#9b22dd]" aria-label="View Portfolio">
+            <i class="fas fa-eye icon-pulse"></i> View Work
+          </a>
+          <a href="../images/Parth Resume.pdf" target="_blank" class="inline-block bg-transparent border-2 border-[#9b22dd] text-[#9b22dd] hover:bg-[#9b22dd] hover:text-white py-3 px-8 rounded-lg transition-all hover:-translate-y-1 hover:scale-105 flex items-center justify-center gap-2 text-lg font-medium focus:outline-none focus:ring-2 focus:ring-[#9b22dd]" aria-label="Download Resume">
+            <i class="fas fa-download icon-pulse"></i> Resume
+          </a>
+        </div>
+        <div class="mt-10 flex justify-center gap-6">
+          <a href="https://www.github.com/Parth316" target="_blank" class="text-[var(--secondary-text)] hover:text-[#9b22dd] transition-colors focus:outline-none focus:ring-2 focus:ring-[#9b22dd] rounded" aria-label="GitHub Profile">
+            <i class="fab fa-github text-4xl"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/parth316" target="_blank" class="text-[var(--secondary-text)] hover:text-[#9b22dd] transition-colors focus:outline-none focus:ring-2 focus:ring-[#9b22dd] rounded" aria-label="LinkedIn Profile">
+            <i class="fab fa-linkedin text-4xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <a href="#about" class="absolute bottom-8 text-[var(--secondary-text)] hover:text-[#9b22dd] transition-colors scroll-down focus:outline-none focus:ring-2 focus:ring-[#9b22dd] rounded" aria-label="Scroll to About">
+      <i class="fas fa-chevron-down text-2xl"></i>
+    </a>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 hidden-section bg-[var(--section-bg) opacity-20] theme-transition">
+    <div class="container mx-auto px-6 sm:px-10 lg:px-32">
+      <div class="text-center mb-16">
+        <span class="inline-block text-[#9b22dd] font-medium mb-3">ABOUT ME</span>
+        <h2 class="text-4xl font-bold text-[var(--text-color)] mb-4">Who I Am</h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-[#9b22dd] to-[#d946ef] mx-auto"></div>
+      </div>
+      <div class="lg:w-full">
+        <h3 class="text-3xl font-semibold text-[var(--text-color)] mb-6">A passionate developer creating digital solutions</h3>
+        <div class="space-y-4 mb-8">
+          <p class="text-[var(--secondary-text)] leading-relaxed text-lg">With a strong foundation in both UI/UX design and full-stack development, I bring technical expertise and creative problem-solving to every project. Currently pursuing Web Development at Algonquin College, I've earned accolades like the Dean's Honour List and Student Excellence Award.</p>
+          <p class="text-[var(--secondary-text)] leading-relaxed text-lg">My approach combines strategic thinking, attention to detail, and a passion for crafting seamless user experiences that drive results.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-[var(--card-bg)] p-4 rounded-lg shadow-md">
+            <div class="text-[#9b22dd] text-xl mb-2">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h4 class="font-semibold text-[var(--text-color)]">Education</h4>
+            <p class="text-sm text-[var(--secondary-text)]">Diploma in Web Development, Algonquin College</p>
+          </div>
+          <div class="bg-[var(--card-bg)] p-4 rounded-lg shadow-md">
+            <div class="text-[#9b22dd] text-xl mb-2">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h4 class="font-semibold text-[var(--text-color)]">Education</h4>
+            <p class="text-sm text-[var(--secondary-text)]">3-Year Diploma in IT Engineering, Gujarat Technological University</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="py-20 hidden-section bg-[var(--primary-bg) opacity-20] theme-transition">
+    <div class="container mx-auto px-6 sm:px-10 lg:px-32">
+      <div class="text-center mb-16">
+        <span class="inline-block text-[#9b22dd] font-medium mb-3">MY WORK</span>
+        <h2 class="text-4xl font-bold text-[var(--text-color)] mb-4">Featured Projects</h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-[#9b22dd] to-[#d946ef] mx-auto"></div>
+      </div>
+      <div class="flex justify-center gap-4 mb-8">
+        <button class="portfolio-filter px-4 py-2 rounded-lg bg-[var(--card-bg)] text-[var(--text-color)] hover:bg-[#9b22dd] hover:text-white transition-all active" data-filter="all" aria-label="Show All Projects">All</button>
+        <button class="portfolio-filter px-4 py-2 rounded-lg bg-[var(--card-bg)] text-[var(--text-color)] hover:bg-[#9b22dd] hover:text-white transition-all" data-filter="web" aria-label="Show Web Projects">Web</button>
+        <button class="portfolio-filter px-4 py-2 rounded-lg bg-[var(--card-bg)] text-[var(--text-color)] hover:bg-[#9b22dd] hover:text-white transition-all" data-filter="mobile" aria-label="Show Mobile Projects">Mobile</button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 portfolio-items">
+        <div class="bg-[var(--card-bg)] rounded-xl overflow-hidden visible-section glass-effect" data-category="web">
+          <div class="relative overflow-hidden h-60">
+            <img src="../images/logo.png" alt="Reader's Paradise" class="w-full h-full object-contain p-12 transition-transform duration-500 group-hover:scale-110" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 left-0 p-6">
+              <h3 class="text-xl font-bold text-white mb-1">Reader's Paradise</h3>
+              <p class="text-[var(--text-color)] text-sm">MERN Stack Application</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-[var(--secondary-text)] mb-4">A comprehensive library management system with book borrowing, purchasing, and inventory management features. Built with a focus on scalability and user-friendly interfaces.</p>
+            <div class="mb-4">
+              <h4 class="text-sm font-semibold text-[var(--text-color)] mb-2">Technologies</h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-[#9b22dd] text-white px-3 py-1 rounded-full text-xs flex items-center gap-1">
+                  <i class="fab fa-react"></i> React
+                </span>
+                <span class="bg-[#9b22dd] text-white px-3 py-1 rounded-full text-xs flex items-center gap-1">
+                  <i class="fab fa-node-js"></i> Node.js
+                </span>
+                <span class="bg-[#9b22dd] text-white px-3 py-1 rounded-full text-xs flex items-center gap-1">
+                  <i class="fas fa-database"></i> MongoDB
+                </span>
+                <span class="bg-[#9b22dd] text-white px-3 py-1 rounded-full text-xs flex items-center gap-1">
+                  <i class="fab fa-js"></i> Express.js
+                </span>
+              </div>
+            </div>
+            <div class="flex justify-between items-center">
+              <a href="https://github.com/Parth316/readers-paradise" target="_blank" class="text-[#9b22dd] hover:text-[#9b55dd] font-medium inline-flex items-center focus:outline-none focus:ring-2 focus:ring-[#9b22dd]" aria-label="View Reader's Paradise Project">
+                View Project <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+              <a href="https://github.com/Parth316/readers-paradise" target="_blank" class="text-[var(--secondary-text)] hover:text-[#9b22dd] transition-colors" aria-label="GitHub Repository">
+                <i class="fab fa-github text-xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-[var(--card-bg)] rounded-xl overflow-hidden visible-section glass-effect" data-category="mobile">
+          <div class="relative overflow-hidden h-60">
+            <img src="../images/name.png" alt="E-Transport" class="w-full h-full object-contain p-12 transition-transform duration-500 group-hover:scale-110" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 left-0 p-6">
+              <h3 class="text-xl font-bold text-white mb-1">E-Transport</h3>
+              <p class="text-[var(--text-color)] text-sm">Android Application</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-[var(--secondary-text)] mb-4">A vehicle rental app with real-time bookings and Google Maps integration for Android devices. Designed for seamless user experiences.</p>
+            <div class="mb-4">
+              <h4 class="text-sm font-semibold text-[var(--text-color)] mb-2">Technologies</h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-[#9b22dd] text-white px-3 py-1 rounded-full text-xs flex items-center gap-1">
+                  <i class="fab fa-java"></i> Java
+                </span>
+                <span class="bg-[#9b22dd] text-white px-3 py-1 rounded-full text-xs flex items-center gap-1">
+                  <i class="fas fa-fire"></i> Firebase
+                </span>
+                <span class="bg-[#9b22dd] text-white px-3 py-1 rounded-full text-xs flex items-center gap-1">
+                  <i class="fas fa-map"></i> Google Maps
+                </span>
+                <span class="bg-[#9b22dd] text-white px-3 py-1 rounded-full text-xs flex items-center gap-1">
+                  <i class="fab fa-android"></i> Android SDK
+                </span>
+              </div>
+            </div>
+            <div class="flex justify-between items-center">
+              <a href="https://github.com/Parth316/E_Transport" target="_blank" class="text-[#9b22dd] hover:text-[#9b55dd] font-medium inline-flex items-center focus:outline-none focus:ring-2 focus:ring-[#9b22dd]" aria-label="View E-Transport Project">
+                View Project <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+              <a href="https://github.com/Parth316/E_Transport" target="_blank" class="text-[var(--secondary-text)] hover:text-[#9b22dd] transition-colors" aria-label="GitHub Repository">
+                <i class="fab fa-github text-xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="text-center mt-12">
+        <a href="#" class="inline-flex items-center px-6 py-3 border border-[#9b22dd] text-[#9b22dd] rounded-lg hover:bg-[#9b22dd] hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#9b22dd]" aria-label="View All Projects">View All Projects <i class="fas fa-arrow-right ml-2"></i></a>
+      </div> -->
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="py-20 bg-[var(--section-bg) opacity-20] theme-transition">
+    <div class="container mx-auto px-6 sm:px-10 lg:px-32">
+      <div class="text-center mb-16">
+        <span class="inline-block text-[#9b22dd] font-medium mb-3">CAREER PATH</span>
+        <h2 class="text-4xl font-bold text-[var(--text-color)] mb-4">Work Experience</h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-[#9b22dd] to-[#d946ef] mx-auto"></div>
+      </div>
+      <div class="max-w-full mx-auto">
+        <div class="relative">
+          <div class="mb-8 flex w-full">
+            <div class="order-1 w-full px-4 py-4">
+              <div class="bg-[var(--card-bg)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <h3 class="text-xl font-bold text-[var(--text-color)] mb-1">UI Designer</h3>
+                <div class="text-[#9b22dd] mb-2">Qrious Technologies, IN</div>
+                <div class="text-sm text-[var(--secondary-text)] mb-3">July 2022 – August 2023</div>
+                <ul class="text-[var(--secondary-text)] space-y-2">
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-[#9b22dd] mt-1 mr-2"></i>
+                    <span>Designed intuitive interfaces for web and mobile apps using Figma</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-[#9b22dd] mt-1 mr-2"></i>
+                    <span>Collaborated with clients to enhance UX, increasing engagement by 40%</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-[#9b22dd] mt-1 mr-2"></i>
+                    <span>Created design systems and style guides for consistent branding</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-20 hidden-section bg-[var(--primary-bg) opacity-20] theme-transition">
+    <div class="container mx-auto px-6 sm:px-10 lg:px-32">
+      <div class="text-center mb-16">
+        <span class="inline-block text-[#9b22dd] font-medium mb-3">MY CAPABILITIES</span>
+        <h2 class="text-4xl font-bold text-[var(--text-color)] mb-4">Skills & Technologies</h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-[#9b22dd] to-[#d946ef] mx-auto"></div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-[var(--card-bg)] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="bg-[#9b22dd] bg-opacity-10 p-3 rounded-lg mr-4">
+              <i class="fas fa-laptop-code text-[#9b22dd] text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-[var(--text-color)]">Frontend</h3>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-[var(--secondary-text)]">React</span>
+                <span class="text-[#9b22dd] font-medium">90%</span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-3 relative overflow-hidden">
+                <div class="progress-bar bg-gradient-to-r from-[#9b22dd] to-[#d946ef] h-3 rounded-full" data-width="90%"></div>
+                <div class="progress-glow absolute inset-0 opacity-0"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-[var(--secondary-text)]">TypeScript</span>
+                <span class="text-[#9b22dd] font-medium">85%</span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-3 relative overflow-hidden">
+                <div class="progress-bar bg-gradient-to-r from-[#9b22dd] to-[#d946ef] h-3 rounded-full" data-width="85%"></div>
+                <div class="progress-glow absolute inset-0 opacity-0"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-[var(--secondary-text)]">HTML/CSS</span>
+                <span class="text-[#9b22dd] font-medium">95%</span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-3 relative overflow-hidden">
+                <div class="progress-bar bg-gradient-to-r from-[#9b22dd] to-[#d946ef] h-3 rounded-full" data-width="95%"></div>
+                <div class="progress-glow absolute inset-0 opacity-0"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-[var(--card-bg)] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="bg-[#9b22dd] bg-opacity-10 p-3 rounded-lg mr-4">
+              <i class="fas fa-server text-[#9b22dd] text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-[var(--text-color)]">Backend</h3>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-[var(--secondary-text)]">Node.js</span>
+                <span class="text-[#9b22dd] font-medium">88%</span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-3 relative overflow-hidden">
+                <div class="progress-bar bg-gradient-to-r from-[#9b22dd] to-[#d946ef] h-3 rounded-full" data-width="88%"></div>
+                <div class="progress-glow absolute inset-0 opacity-0"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-[var(--secondary-text)]">.NET Core</span>
+                <span class="text-[#9b22dd] font-medium">80%</span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-3 relative overflow-hidden">
+                <div class="progress-bar bg-gradient-to-r from-[#9b22dd] to-[#d946ef] h-3 rounded-full" data-width="80%"></div>
+                <div class="progress-glow absolute inset-0 opacity-0"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-[var(--secondary-text)]">C#</span>
+                <span class="text-[#9b22dd] font-medium">75%</span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-3 relative overflow-hidden">
+                <div class="progress-bar bg-gradient-to-r from-[#9b22dd] to-[#d946ef] h-3 rounded-full" data-width="75%"></div>
+                <div class="progress-glow absolute inset-0 opacity-0"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-[var(--card-bg)] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="bg-[#9b22dd] bg-opacity-10 p-3 rounded-lg mr-4">
+              <i class="fas fa-database text-[#9b22dd] text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-[var(--text-color)]">Database & Tools</h3>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-[var(--secondary-text)]">MongoDB</span>
+                <span class="text-[#9b22dd] font-medium">70%</span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-3 relative overflow-hidden">
+                <div class="progress-bar bg-gradient-to-r from-[#9b22dd] to-[#d946ef] h-3 rounded-full" data-width="70%"></div>
+                <div class="progress-glow absolute inset-0 opacity-0"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-[var(--secondary-text)]">SQL</span>
+                <span class="text-[#9b22dd] font-medium">85%</span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-3 relative overflow-hidden">
+                <div class="progress-bar bg-gradient-to-r from-[#9b22dd] to-[#d946ef] h-3 rounded-full" data-width="85%"></div>
+                <div class="progress-glow absolute inset-0 opacity-0"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-[var(--secondary-text)]">AWS</span>
+                <span class="text-[#9b22dd] font-medium">20%</span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-3 relative overflow-hidden">
+                <div class="progress-bar bg-gradient-to-r from-[#9b22dd] to-[#d946ef] h-3 rounded-full" data-width="20%"></div>
+                <div class="progress-glow absolute inset-0 opacity-0"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-[var(--section-bg)] text-[var(--text-color)] hidden-section theme-transition">
+    <div class="container mx-auto px-6 sm:px-10 lg:px-32">
+      <div class="text-center mb-16">
+        <span class="inline-block text-[#9b22dd] font-medium mb-3">GET IN TOUCH</span>
+        <h2 class="text-4xl font-bold text-[var(--text-color)] mb-4">Contact Me</h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-[#9b22dd] to-[#d946ef] mx-auto"></div>
+      </div>
+      <div class="flex flex-col lg:flex-row gap-12">
+        <div class="lg:w-1/2">
+          <h3 class="text-2xl font-semibold text-[var(--text-color)] mb-6">Let's Talk About Your Project</h3>
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="px-3 mt-1 w-12 h-12">
+                <i class="fas fa-envelope text-[#9b22dd]"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-[var(--secondary-text)] mb-1">Email</h4>
+                <a href="mailto:prajapatiparth1087@gmail.com" class="text-[#9b22dd] hover:text-[#9b55dd] transition-colors focus:outline-none focus:ring-2 focus:ring-[#9b22dd]" aria-label="Email Parth">prajapatiparth1087@gmail.com</a>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="px-3 mt-1 w-12 h-12">
+                <i class="fas fa-phone text-[#9b22dd]"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-[var(--secondary-text)] mb-1">Phone</h4>
+                <a href="tel:+14379674413" class="text-[#9b22dd] hover:text-[#9b55dd] transition-colors focus:outline-none focus:ring-2 focus:ring-[#9b22dd]" aria-label="Call Parth">+1-437-967-4413</a>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="px-3 mt-1 w-12 h-12">
+                <i class="fas fa-map-marker-alt text-[#9b22dd]"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-[var(--secondary-text)] mb-1">Location</h4>
+                <p class="text-[#9b22dd]">Mississauga, ON, Canada</p>
+              </div>
+            </div>
+            <div class="pt-4">
+              <h4 class="font-medium text-[var(--secondary-text)] mb-4">Follow Me</h4>
+              <div class="flex space-x-4">
+                <a href="https://www.linkedin.com/in/parth316" target="_blank" class="w-10 h-10 flex items-center justify-center bg-[var(--card-bg)] rounded-full hover:bg-[#9b22dd] hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#9b22dd]" aria-label="LinkedIn Profile">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/Parth316" target="_blank" class="w-10 h-10 flex items-center justify-center bg-[var(--card-bg)] rounded-full hover:bg-[#9b22dd] hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#9b22dd]" aria-label="GitHub Profile">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:w-1/2">
+          <form action="https://formspree.io/f/mnnpeewp" method="POST" class="space-y-6" id="contact-form">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-[var(--secondary-text)] mb-2">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" class="w-full p-4 bg-[var(--card-bg)] rounded-lg placeholder-[var(--secondary-text)] focus:bg-[var(--input-focus-bg)] focus:outline-none focus:ring-2 focus:ring-[#9b22dd] transition-all" required aria-required="true">
+              </div>
+              <div>
+                <label for="email" class="block text-[var(--secondary-text)] mb-2">Your Email</label>
+                <input type="email" id="email" name="_replyto" placeholder="john@example.com" class="w-full p-4 bg-[var(--card-bg)] rounded-lg placeholder-[var(--secondary-text)] focus:bg-[var(--input-focus-bg)] focus:outline-none focus:ring-2 focus:ring-[#9b22dd] transition-all" required aria-required="true">
+              </div>
+            </div>
+            <div>
+              <label for="subject" class="block text-[var(--secondary-text)] mb-2">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Project Inquiry" class="w-full p-4 bg-[var(--card-bg)] rounded-lg placeholder-[var(--secondary-text)] focus:bg-[var(--input-focus-bg)] focus:outline-none focus:ring-2 focus:ring-[#9b22dd] transition-all">
+            </div>
+            <div>
+              <label for="message" class="block text-[var(--secondary-text)] mb-2">Your Message</label>
+              <textarea id="message" name="message" placeholder="Hello Parth, I'd like to discuss..." class="w-full p-4 bg-[var(--card-bg)] rounded-lg placeholder-[var(--secondary-text)] focus:bg-[var(--input-focus-bg)] focus:outline-none focus:ring-2 focus:ring-[#9b22dd] min-h-[150px] transition-all" required aria-required="true"></textarea>
+            </div>
+            <div style="display: none;">
+              <label for="honeypot" class="sr-only">Leave this blank</label>
+              <input type="text" id="honeypot" name="_honeypot">
+            </div>
+            <button type="submit" data-tooltip="Let's connect!" class="w-full relative bg-gradient-to-r from-[#9b22dd] to-[#d946ef] text-white py-4 px-8 rounded-lg font-medium overflow-hidden transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#9b22dd] disabled:bg-gray-500 disabled:cursor-not-allowed disabled:scale-100 group" id="submit-button" aria-label="Send Message">
+              <span class="absolute inset-0 bg-[#9b22dd] opacity-0 group-hover:opacity-30 transition-opacity duration-500"></span>
+              <span class="relative z-10 flex items-center justify-center gap-2">
+                <span id="button-text">Send Message</span>
+                <span id="button-icon" class="transition-transform duration-300 group-hover:translate-x-2">
+                  <i class="fas fa-paper-plane"></i>
+                </span>
+                <span id="loading-spinner" class="hidden"><i class="fas fa-spinner animate-[spin_0.75s_linear_infinite]"></i></span>
+                <span id="success-icon" class="hidden"><i class="fas fa-check-circle"></i></span>
+                <span id="progress-bar" class="absolute bottom-0 left-0 h-1 bg-green-400 opacity-0"></span>
+              </span>
+              <span class="absolute inset-0 border-2 border-transparent group-hover:border-[#d946ef] animate-pulse"></span>
+            </button>
+          </form>
+          <div id="form-message" class="mt-4 text-center text-lg font-medium"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[var(--section-bg)] text-[var(--secondary-text)] py-10 theme-transition">
+    <div class="container mx-auto px-6 sm:px-10 lg:px-32">
+      <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+        <div class="mb-6 md:mb-0 text-center md:text-left">
+          <h4 class="text-xl font-semibold text-[var(--text-color)] mb-2">Parth</h4>
+          <p class="max-w-md">Creating exceptional digital experiences through thoughtful design and robust development.</p>
+        </div>
+        <div class="flex flex-col items-center md:items-end">
+          <div class="flex space-x-4 mb-4">
+            <a href="https://www.linkedin.com/in/parth316" target="_blank" class="w-10 h-10 flex items-center justify-center bg-[var(--card-bg)] rounded-full hover:bg-[#9b22dd] hover:text-white transition-colors">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/Parth316" target="_blank" class="w-10 h-10 flex items-center justify-center bg-[var(--card-bg)] rounded-full hover:bg-[#9b22dd] hover:text-white transition-colors">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+          <a href="mailto:prajapatiparth1087@gmail.com" class="text-[#9b22dd] hover:text-[#9b55dd] transition-colors">prajapatiparth1087@gmail.com</a>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-[var(--border-color)] text-center">
+        <p>© 2025 Parth. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
