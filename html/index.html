@@ -75,14 +75,15 @@
         <a href="#experience" class="nav-link hover:text-[#9b22dd] transition-colors">Experience</a>
         <a href="#skills" class="nav-link hover:text-[#9b22dd] transition-colors">Skills</a>
         <a href="#contact" class="nav-link bg-[#9b22dd] hover:bg-[#9b55dd] text-white px-4 py-2 rounded-lg text-center transition-all">Contact</a>
-        <button class="theme-toggle p-2 text-left hover:text-[#9b22dd] transition-colors focus:outline-none focus:ring-2 focus:ring-[#9b22dd] flex items-center" id="mobile-theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
-          Toggle Theme
-          <svg class="sun-and-moon ml-2" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24">
-            <mask class="moon" id="mobile-moon-mask">
-              <rect x="0" y="0" width="100%" height="100%" fill="white" />
-              <circle cx="24" cy="10" r="6" fill="black" />
-            </mask>
-            <circle class="sun" cx="12" cy="12" r="6" mask="url(#mobile-moon-mask)" fill="currentColor" />
+        <div class="container flex flex-center justify-center items-center mt-4">
+          <p>Change Theme : </p>
+          <button class="theme-toggle p-2 text-left hover:text-[#9b22dd] transition-colors focus:outline-none focus:ring-2 focus:ring-[#9b22dd] flex items-center" id="mobile-theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+            <svg class="sun-and-moon ml-2" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24">
+              <mask class="moon" id="mobile-moon-mask">
+                <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                <circle cx="24" cy="10" r="6" fill="black" />
+              </mask>
+              <circle class="sun" cx="12" cy="12" r="6" mask="url(#mobile-moon-mask)" fill="currentColor" />
             <g class="sun-beams" stroke="currentColor">
               <line x1="12" y1="1" x2="12" y2="3" />
               <line x1="12" y1="21" x2="12" y2="23" />
@@ -95,6 +96,7 @@
             </g>
           </svg>
         </button>
+      </div>
       </div>
     </div>
   </header>
@@ -275,8 +277,8 @@
           <div class="mb-8 flex w-full">
             <div class="order-1 w-full px-4 py-4">
               <div class="bg-[var(--card-bg)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <h3 class="text-xl font-bold text-[var(--text-color)] mb-1">UI Designer</h3>
-                <div class="text-[#9b22dd] mb-2">Qrious Technologies, IN</div>
+                <h3 class="text-2xl font-bold text-[var(--text-color)] mb-1">UI Designer</h3>
+                <div class="text-[#9b22dd] font-bold mb-2">Qrious Technologies, IN</div>
                 <div class="text-sm text-[var(--secondary-text)] mb-3">July 2022 – August 2023</div>
                 <ul class="text-[var(--secondary-text)] space-y-2">
                   <li class="flex items-start">
@@ -490,20 +492,20 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label for="name" class="block text-[var(--secondary-text)] mb-2">Your Name</label>
-                <input type="text" id="name" name="name" placeholder="John Doe" class="w-full p-4 bg-[var(--card-bg)] rounded-lg placeholder-[var(--secondary-text)] focus:bg-[var(--input-focus-bg)] focus:outline-none focus:ring-2 focus:ring-[#9b22dd] transition-all" required aria-required="true">
+                <input type="text" id="name" name="name" placeholder="John Doe" class="w-full p-4 bg-[var(--input-field-bg)] rounded-lg placeholder-[var(--secondary-text)] focus:bg-[var(--input-focus-bg)] focus:outline-none focus:ring-2 focus:ring-[#9b22dd] transition-all" required aria-required="true">
               </div>
               <div>
                 <label for="email" class="block text-[var(--secondary-text)] mb-2">Your Email</label>
-                <input type="email" id="email" name="_replyto" placeholder="john@example.com" class="w-full p-4 bg-[var(--card-bg)] rounded-lg placeholder-[var(--secondary-text)] focus:bg-[var(--input-focus-bg)] focus:outline-none focus:ring-2 focus:ring-[#9b22dd] transition-all" required aria-required="true">
+                <input type="email" id="email" name="_replyto" placeholder="john@example.com" class="w-full p-4 bg-[var(--input-field-bg)] rounded-lg placeholder-[var(--secondary-text)] focus:bg-[var(--input-focus-bg)] focus:outline-none focus:ring-2 focus:ring-[#9b22dd] transition-all" required aria-required="true">
               </div>
             </div>
             <div>
               <label for="subject" class="block text-[var(--secondary-text)] mb-2">Subject</label>
-              <input type="text" id="subject" name="subject" placeholder="Project Inquiry" class="w-full p-4 bg-[var(--card-bg)] rounded-lg placeholder-[var(--secondary-text)] focus:bg-[var(--input-focus-bg)] focus:outline-none focus:ring-2 focus:ring-[#9b22dd] transition-all">
+              <input type="text" id="subject" name="subject" placeholder="Project Inquiry" class="w-full p-4 bg-[var(--input-field-bg)] rounded-lg placeholder-[var(--secondary-text)] focus:bg-[var(--input-focus-bg)] focus:outline-none focus:ring-2 focus:ring-[#9b22dd] transition-all">
             </div>
             <div>
               <label for="message" class="block text-[var(--secondary-text)] mb-2">Your Message</label>
-              <textarea id="message" name="message" placeholder="Hello Parth, I'd like to discuss..." class="w-full p-4 bg-[var(--card-bg)] rounded-lg placeholder-[var(--secondary-text)] focus:bg-[var(--input-focus-bg)] focus:outline-none focus:ring-2 focus:ring-[#9b22dd] min-h-[150px] transition-all" required aria-required="true"></textarea>
+              <textarea id="message" name="message" placeholder="Hello Parth, I'd like to discuss..." class="w-full p-4 bg-[var(--input-field-bg)] rounded-lg placeholder-[var(--secondary-text)] focus:bg-[var(--input-focus-bg)] focus:outline-none focus:ring-2 focus:ring-[#9b22dd] min-h-[150px] transition-all" required aria-required="true"></textarea>
             </div>
             <div style="display: none;">
               <label for="honeypot" class="sr-only">Leave this blank</label>

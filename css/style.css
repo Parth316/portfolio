@@ -6,8 +6,9 @@
   --text-color: #1f2937; /* Dark gray for text */
   --secondary-text: #6b7280; /* Lighter gray for secondary text */
   --input-focus-bg: #e5e7eb; /* Light gray for input focus */
+  --input-field-bg:#eeeeee; /* Darker gray for input focus */
   --border-color: #e5e7eb; /* Light border */
-  --gradient-start: #9b22dd; /* Primary purple */
+  --gradient-start: rgb(155, 34, 221); /* Primary purple */
   --gradient-end: #d946ef; /* Secondary pink */
   --icon-fill: #6b7280; /* Default icon color */
   --icon-fill-hover: #9b22dd; /* Hover icon color */
@@ -15,11 +16,13 @@
 
 [data-theme="dark"] {
   --primary-bg: #1f2937; /* Dark gray for body */
-  --section-bg: #374151; /* Darker gray for sections */
-  --card-bg: #4b5563; /* Dark gray for cards */
+  --section-bg: #07090b; /* Darker gray for sections */
+  --card-bg: #07090b; /* Dark gray for cards */
   --text-color: #f3f4f6; /* Light gray for text */
   --secondary-text: #9ca3af; /* Lighter gray for secondary text */
   --input-focus-bg: #6b7280; /* Darker gray for input focus */
+  --input-bg:#070b0d; /* Darker gray for input focus */
+  --input-field-bg:#292e31; /* Darker gray for input focus */
   --border-color: #4b5563; /* Dark border */
   --icon-fill: #9ca3af; /* Lighter gray for dark theme icons */
   --icon-fill-hover: #d946ef; /* Hover icon color for dark theme */
